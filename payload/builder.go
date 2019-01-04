@@ -11,6 +11,7 @@ type Payload struct {
 }
 
 type aps struct {
+	Cmd              string      `json:"cmd"`
 	Alert            interface{} `json:"alert,omitempty"`
 	Badge            interface{} `json:"badge,omitempty"`
 	Category         string      `json:"category,omitempty"`
@@ -64,7 +65,7 @@ func (p *Payload) Alert(alert interface{}) *Payload {
 // This will display a numeric badge on the app icon.
 //
 //	{"aps":{"badge":b}}
-func (p *Payload) Badge(b int) *Payload {
+func (p *Payload) Badge(b interface{}) *Payload {
 	p.aps().Badge = b
 	return p
 }
@@ -125,6 +126,12 @@ func (p *Payload) MutableContent() *Payload {
 //	{"aps":{}, key:value}
 func (p *Payload) Custom(key string, val interface{}) *Payload {
 	p.content[key] = val
+	return p
+}
+
+// add cmd
+func (p *Payload) Cmd(cmd string) *Payload {
+	p.aps().Cmd = cmd
 	return p
 }
 
