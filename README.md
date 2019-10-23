@@ -1,5 +1,5 @@
 # APNS/2
 
 - fork form github.com/sideshow/apns2
-- add payload param cmd
-- mod method Badge
+- 添加了消息体参数 cmd
+- 修改方法 Badge
